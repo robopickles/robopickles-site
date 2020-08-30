@@ -1,6 +1,6 @@
 {
   "name": "robopickles",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.62",
+    "@docusaurus/plugin-google-analytics": "^2.0.0-alpha.62",
+    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.62",
     "@docusaurus/preset-classic": "^2.0.0-alpha.62",
     "@mdx-js/react": "^1.5.8",
     "clsx": "^1.1.1",

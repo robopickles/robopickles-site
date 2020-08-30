@@ -1,17 +1,17 @@
 module.exports = {
   title: 'My Site',
   tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://robopickles.github.io',
+  baseUrl: '/robopickles-site/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'robopickles', // Usually your GitHub org/user name.
+  projectName: 'robopickles-site', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'RoboPickles',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'RoboPickles',
         src: 'img/logo.svg',
       },
       items: [
@@ -21,9 +21,9 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        { to: 'blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/robopickles/',
           label: 'GitHub',
           position: 'right',
         },
@@ -50,7 +50,8 @@ module.exports = {
           items: [
             {
               label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              href:
+                'https://stackoverflow.com/questions/tagged/docusaurus',
             },
             {
               label: 'Discord',
@@ -78,6 +79,11 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
+    googleAnalytics: {
+      trackingID: 'UA-176711841-1',
+      // Optional fields.
+      anonymizeIP: true,
+    },
   },
   presets: [
     [
@@ -86,14 +92,12 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/robopickles/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          editUrl: 'https://github.com/robopickles/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -101,4 +105,5 @@ module.exports = {
       },
     ],
   ],
+  plugins: ['@docusaurus/plugin-ideal-image'],
 };
