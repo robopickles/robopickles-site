@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{64:function(s){s.exports=JSON.parse('{"allTagsPath":"/robopickles-site/blog/tags","slug":"stitching","name":"stitching","count":1,"permalink":"/robopickles-site/blog/tags/stitching"}')}}]);

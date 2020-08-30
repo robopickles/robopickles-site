@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{68:function(t){t.exports=JSON.parse('{"stitching":{"allTagsPath":"/blog/tags","slug":"stitching","name":"stitching","count":1,"permalink":"/blog/tags/stitching"},"perfectlabel":{"allTagsPath":"/blog/tags","slug":"perfectlabel","name":"perfectlabel","count":1,"permalink":"/blog/tags/perfectlabel"}}')}}]);

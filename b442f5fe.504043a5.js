@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{72:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"perfectlabel","name":"perfectlabel","count":1,"permalink":"/blog/tags/perfectlabel"}')}}]);
