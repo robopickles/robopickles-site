@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{63:function(e){e.exports=JSON.parse('{"allTagsPath":"/robopickles-site/blog/tags","slug":"perfectlabel","name":"perfectlabel","count":1,"permalink":"/robopickles-site/blog/tags/perfectlabel"}')}}]);
