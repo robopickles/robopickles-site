@@ -1,8 +1,8 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
+  title: 'RoboPickles',
+  tagline: 'An awesome team',
   url: 'https://robopickles.github.io',
-  baseUrl: '/robopickles-site/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'robopickles', // Usually your GitHub org/user name.
