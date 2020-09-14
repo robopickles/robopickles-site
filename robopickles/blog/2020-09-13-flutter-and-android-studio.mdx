@@ -49,7 +49,7 @@ In my case I get:
 
 I must admit that I'm not an expert in Android Studio internals. So I may be wrong in some cases, but here what I've found after multiple fresh installation and different attempts to fix my project.
 
-Your biggest friend is `F4` button (`File -> Project Structure`).
+Your biggest friend is `F4` button on top-level module or `File -> Project Structure` via menu.
 
 You can use it to set your SDK:
 
@@ -79,11 +79,21 @@ This notifications are reasons for our problems. `flutter create` creates projec
 </modules>
 ```
 
-`IML` files are used by Android Studio to store information about module. And if we check path for broken modules - we don't find iml files on these paths.
+`IML` files are used by Android Studio to store information about module. For some reason they don't have `Android Gradle` settings that correct modules have.
 
-Also, if you try to edit your modules to correct (eg. add root dir or anything else). You won't get the expected result, Studio just loose information and doesn't create missing iml files.
+It should look like this:
 
-So, we're going to remove these things. Or you can remove modules in `Project Structure` menu.
+```xml
+<facet type="android-gradle" name="Android-Gradle">
+  <configuration>
+    <option name="GRADLE_PROJECT_PATH" value=":proper_pytorch" />
+    <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="3.6.3" />
+    <option name="LAST_KNOWN_AGP_VERSION" value="3.6.3" />
+  </configuration>
+</facet>
+```
+
+Probably it is possible to fix it just view `Project Structure` menu. But on my installation this view is broken for just-generated project.
 
 
 ### Workaround for kotlin module
