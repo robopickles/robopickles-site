@@ -103,4 +103,31 @@ This enables at least basic editing for Android code withing Studio.
 
 And it will generate `iml` for this module inside nested under `example/android/.idea/modules/` directory. Unfortunately, you cannot get you main project working by importing this iml file directly.
 
-### Trying to fix main project
+### Fixing main project
+
+Remove auto-generated `.idea` directory. Commit it as a clear state.
+
+Open `Settings -> Build,Exectuion,Deployment -> Build Tools -> Gradle` and opt-in `Generate *.iml files`.
+
+![generate iml](/img/blog/2020-09-13-flutter-and-android-studio/08_generate_iml.png)
+
+Then you need run your application once. This will generate all required gradle files.
+
+Set your project sdk in `Project Structure -> Project` to Android SDK.
+
+After that you can import `build.gradle` from `example/android` directory.
+
+![import gradle](/img/blog/2020-09-13-flutter-and-android-studio/09_import_gradle.png)
+
+After that you should see a lot of libraries in Project window on the bottom of the view.
+
+This will enable code completion. Unfortunately some things (eg. running tests from Studio) still may fail. To fix that you need to restart Studio.
+
+So, correct project will have 3 additional `iml` files and `.idea` directory also will have `gradle.xml`.
+
+![new .idea dir](/img/blog/2020-09-13-flutter-and-android-studio/10_good_idea.png)
+
+### Afterword
+
+As the result of all our manipulation we will have broken `Project Structure` menu, but rest of things seem to be working.
+
