@@ -5,13 +5,13 @@ authorURL: https://github.com/cybergrind
 tags: [flutter, android-studio, intellij-idea]
 ---
 
-For our [neural network for unwrapping](https://perfectlabel.io) we've needed to run inference on phone. We have an application that is using flutter to provide cross-platform development and we needed to integrate with mobile pytorch library. We always tried to cut corners everywhere we could. But on the current stage of flutter life there are no good flutter plugins that have support for our model. Mostly plugins just re-create pytorch's mobile sample application that is classifying images. We need heatmaps.
+We've needed to run inference on the phone for our [neural network for unwrapping](https://perfectlabel.io). We have an application built with Flutter to provide cross-platform development, and we needed to integrate with the mobile Pytorch library. We always tried to cut corners everywhere we could. But on the current Flutter's life stage, there are no excellent Flutter plugins that support our neural model. Most plugins re-create Pytorch's mobile sample application that is classifying images. We need heatmaps.
 
-Calling native code in flutter is super easy, so there were no big issues to implement it. So we did that.
+Calling native code in Flutter is super easy, so there were no big issues to implement it. So we did that.
 
-But there are bunch of different possible outputs that can exist and we can improve existing flutter's ecosphere by separating [part of internal application to plugin](https://github.com/robopickles/proper_pytorch).
+But many different possible outputs can exist, and we can improve existing Flutter's ecosphere by separating [part of an internal application to plugin](https://github.com/robopickles/proper_pytorch).
 
-This article is just about how to start plugin development. Currently flutter (1.20.3) and android-studio (3.6/4.0) have some gotchas to work it better than out-of-box.
+This article is just about how to start plugin development. Currently, Flutter (1.20.3) and android-studio (3.6/4.0) have some gotchas to work it better than out-of-box.
 
 ![caution](/img/blog/2020-10-03-flutter-and-android-studio/minefield.jpg)
 
@@ -19,27 +19,27 @@ This article is just about how to start plugin development. Currently flutter (1
 
 ### Create your plugin
 
-First, you start your plugin by triggering template.
+First, you start your plugin by triggering a template.
 
 ```bash
 flutter create --org com.robopickles --template plugin \
     --platforms=android,ios -a kotlin proper_pytorch
 ```
 
-After this step you probably want to add everything to repository and commit just create code. Because you probably will setup-and-reset it back several times.
+After this step, you probably want to add everything to the repository and commit created code. Because you probably will setup-and-reset it back several times.
 
 ### Open in Android Studio
 
-First you need to install `Flutter` plugin. Then you're ready to open your project.
+First, you need to install `Flutter` plugin. Then you're ready to open your project.
 
-You have two options how to open your project:
+You have two options on how to open your project:
 
-* Import existing Flutter project. This isn't recommened by official documentation because project will be broken.
-* Open existing project. This doesn't really lead to better working project in my case.
+* Import existing Flutter project. That isn't recommended by official documentation because the project will be broken.
+* Open an existing project. That doesn't lead to a better working project in my case.
 
-### How to understand if you got working project
+### How to understand if you got a working project
 
-First of all building and running project will work all times, despite code completion may not work or gradle won't get detected by studio - this only affects Android Studio and doesn't prevent gradle itself from building correct apk.
+First of all, building and running a project will always work. You may have broken code completion, or Gradle won't get detected by Studio - this only affects Android Studio and doesn't prevent Gradle itself from building correct apk.
 
 You need to open `android/src/main/kotlin/com/robopickles/proper_pytorch/ProperPytorchPlugin.kt` and if you can navigate by Ctrl-clicking - your're good.
 
@@ -49,23 +49,23 @@ But you may get something like this (`Cannot find declaration to go to`):
 
 ### Open project in Android Studio
 
-I must admit that I'm not an expert in Android Studio internals. So I may be wrong in some cases, but here what I've found after multiple fresh installation and different variants of fixing it.
+I must admit that I'm not an expert in Android Studio internals. So I may be wrong in some cases, but here what I've found after multiple fresh installations and different variants of fixing it.
 
-Your biggest friend is `F4` button on top-level module or `File -> Project Structure` via menu.
+Your most significant friend is `F4` button on the top-level module or `File -> Project Structure` via the menu.
 
-You neet to use it for setting your SDK:
+You can use it for setting your SDK:
 
 ![setup sdk](/img/blog/2020-10-03-flutter-and-android-studio/02_setup_sdk.png)
 
-And check how Studio has detected your modules and dependencies in good module
+And check how Studio has detected your modules and dependencies in a good module
 
 ![good module](/img/blog/2020-10-03-flutter-and-android-studio/03_good_module.png)
 
-And how it looks in bad module
+And how it looks in the bad module
 
 ![bad module](/img/blog/2020-10-03-flutter-and-android-studio/04_bad_module.png)
 
-If you restart Studio you get two notifications about missing `iml` files
+If you restart Studio you get two notifications about missing `iml` files.
 
 ![missing iml](/img/blog/2020-10-03-flutter-and-android-studio/05_no_iml_notification.png)
 
@@ -81,7 +81,7 @@ This notifications are reasons for our problems. `flutter create` creates projec
 </modules>
 ```
 
-`IML` files are used by Android Studio to store information about module. For some reason they don't have `Android Gradle` settings that correct modules have.
+`IML` files are used by Android Studio to store information about the module. For some reason, they don't have `Android Gradle` settings that correct modules have.
 
 It should look like this:
 
@@ -95,27 +95,27 @@ It should look like this:
 </facet>
 ```
 
-Probably it is possible to fix it just view `Project Structure` menu. But on my installation this view is broken for just-generated project.
+It is probably possible to fix it only with `Project Structure` menu. But on my installation, this view is broken for the just-generated project.
 
 
-### Workaround for kotlin module
+### Workaround for Kotlin module
 
-When you have your Kotlin file opened you may notice that Flutter suggest to open it for editing (top-right menu)
+When you have your Kotlin file opened, you may notice that Flutter suggest to open it for editing (top-right menu)
 
 ![link image](/img/blog/2020-10-03-flutter-and-android-studio/06_open_for_editing.png)
 
-This will open module as a new project and magically detect gradle (on the right side)
+That will open the module as a new project and magically detect Gradle (on the right side)
 
 ![gradle detected](/img/blog/2020-10-03-flutter-and-android-studio/07_gradle_detected.png)
 
-Also it will setup all harned and add all dependencies. Thus Kotlin's completion starts work.
+Also, it will setup all harness and add all dependencies. Thus Kotlin's completion starts work.
 
-This enables at least basic editing for Android code withing Studio.
+That enables at least basic editing for Android code withing Studio.
 
 
-And it will generate `iml` for this module inside nested under `example/android/.idea/modules/` directory. Unfortunately, you cannot get you main project working by importing this iml file directly.
+And it will generate `iml` for this module inside nested under `example/android/.idea/modules/` directory. Unfortunately, you cannot get your main project working by importing this iml file directly.
 
-### Fixing main project
+### Fixing the main project
 
 Remove auto-generated `.idea` directory and all `.iml` files. Commit it as a clear state.
 
@@ -123,22 +123,22 @@ Open `Settings -> Build,Exectuion,Deployment -> Build Tools -> Gradle` and opt-i
 
 ![generate iml](/img/blog/2020-10-03-flutter-and-android-studio/08_generate_iml.png)
 
-Then you need run your application once. This will generate all required gradle files.
+Then you need to run your application once. That will generate all required Gradle files.
 
-Set your project sdk in `Project Structure -> Project` to Android SDK.
+Set your project SDK in `Project Structure -> Project` to Android SDK.
 
-After that you can import `build.gradle` from `example/android` directory.
+After that, you can import `build.gradle` from `example/android` directory.
 
 ![import gradle](/img/blog/2020-10-03-flutter-and-android-studio/09_import_gradle.png)
 
-After that you should see a lot of libraries in Project window on the bottom of the view.
+After that, you should see many libraries in the Project window on the bottom of the view.
 
-This will enable code completion. Unfortunately some things (eg. running tests from Studio) still may fail. To fix that you need to restart Studio.
+That will enable code completion. Some things (eg. running tests from Studio) still may fail. To fix that, you need to restart Studio.
 
-So, correct project will have 3 additional `iml` files and `.idea` directory also will have `gradle.xml`.
+The correct project will have 3 additional `iml` files and `.idea` directory will also have `gradle.xml`.
 
 ![new .idea dir](/img/blog/2020-10-03-flutter-and-android-studio/10_good_idea.png)
 
 ### Afterword
 
-As the result of all our manipulation we will have broken `Project Structure` menu, but rest of things seem to be working.
+As a result of all our manipulations, we will have a broken `Project Structure` menu, but the rest of the things seem to be working.
