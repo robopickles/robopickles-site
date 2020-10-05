@@ -5,13 +5,13 @@ authorURL: https://github.com/cybergrind
 tags: [flutter, android-studio, intellij-idea]
 ---
 
-We've needed to run inference on the phone for our [neural network for unwrapping](https://perfectlabel.io). We have an application built with Flutter to provide cross-platform development, and we needed to integrate with the mobile Pytorch library. We always tried to cut corners everywhere we could. But on the current Flutter's life stage, there are no excellent Flutter plugins that support our neural model. Most plugins re-create Pytorch's mobile sample application that is classifying images. We need heatmaps.
+We wanted to run inference on the phone for our [neural network for unwrapping](https://perfectlabel.io). We have an application built with Flutter to provide cross-platform development, and we wanted to integrate with the mobile Pytorch library. We always tried to cut corners everywhere we could. But there were no excellent Flutter plugins that support our neural model on the current Flutter's life stage. Most plugins re-create Pytorch's mobile sample application that is classifying images, but it's required to calculate heatmaps in our case.
 
-Calling native code in Flutter is super easy, so there were no big issues to implement it. So we did that.
+Since it’s super easy to call native code in Flutter, it was an idea to write a custom plugin, doing the required calculations.
 
 But many different possible outputs can exist, and we can improve existing Flutter's ecosphere by separating [part of an internal application to plugin](https://github.com/robopickles/proper_pytorch).
 
-This article is just about how to start plugin development. Currently, Flutter (1.20.3) and android-studio (3.6/4.0) have some gotchas to work it better than out-of-box.
+This article is about how to start plugin development using Flutter and Android Studio. Currently, Flutter (1.20.3) and android-studio (3.6/4.0) have some gotchas to work it better than out-of-box.
 
 ![caution](/img/blog/2020-10-03-flutter-and-android-studio/minefield.jpg)
 
@@ -19,14 +19,14 @@ This article is just about how to start plugin development. Currently, Flutter (
 
 ### Create your plugin
 
-First, you start your plugin by triggering a template.
+Firstly start and empty plugin by triggering a template.
 
 ```bash
 flutter create --org com.robopickles --template plugin \
     --platforms=android,ios -a kotlin proper_pytorch
 ```
 
-After this step, you probably want to add everything to the repository and commit created code. Because you probably will setup-and-reset it back several times.
+After this step, it's recommended to add everything to git and commit the created code. In the future, it might be required to repeat setup-and-reset it back several times.
 
 ### Open in Android Studio
 
@@ -57,7 +57,7 @@ You can use it for setting your SDK:
 
 ![setup sdk](/img/blog/2020-10-03-flutter-and-android-studio/02_setup_sdk.png)
 
-And check how Studio has detected your modules and dependencies in a good module
+And check how Studio has detected your modules and dependencies in a good module.
 
 ![good module](/img/blog/2020-10-03-flutter-and-android-studio/03_good_module.png)
 
