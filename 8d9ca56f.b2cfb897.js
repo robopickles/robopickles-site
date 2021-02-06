@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{82:function(o){o.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"android-studio","name":"android-studio","count":1,"permalink":"/blog/tags/android-studio"}')}}]);

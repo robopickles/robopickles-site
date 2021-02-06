@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{87:function(t){t.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Android Studio setup for Flutter plugin","permalink":"/blog/2020/10/03/flutter-and-android-studio"},{"title":"Seamless Stitching of Perfect Labels","permalink":"/blog/seamless-stitching"}]}')}}]);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://robopickles.github.io/blog</id>
+    <title>RoboPickles Blog</title>
+    <updated>2020-10-03T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://robopickles.github.io/blog"/>
+    <subtitle>RoboPickles Blog</subtitle>
+    <icon>https://robopickles.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Android Studio setup for Flutter plugin]]></title>
+        <id>Android Studio setup for Flutter plugin</id>
+        <link href="https://robopickles.github.io/blog/2020/10/03/flutter-and-android-studio"/>
+        <updated>2020-10-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We wanted to run inference on the phone for our neural network for unwrapping. We have an application built with Flutter to provide cross-platform development, and we wanted to integrate with the mobile Pytorch library. We always tried to cut corners everywhere we could. But there were no excellent Flutter plugins that support our neural model on the current Flutter's life stage. Most plugins re-create Pytorch's mobile sample application that is classifying images, but it's required to calculate heatmaps in our case.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Seamless Stitching of Perfect Labels]]></title>
+        <id>seamless-stitching</id>
+        <link href="https://robopickles.github.io/blog/seamless-stitching"/>
+        <updated>2020-08-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The previous articles describe how to unwrap labels programmatically and how we]]></summary>
+    </entry>
+</feed>

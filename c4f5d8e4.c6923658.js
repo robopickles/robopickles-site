@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[19],{91:function(e,t,n){"use strict";n.r(t);n(3);var a=n(0),r=n.n(a),o=(n(100),n(106),n(107)),c=n(22);n(104),n(92),r.a.Fragment,r.a.Fragment,r.a.Fragment;t.default=function(){return Object(c.default)().siteConfig,r.a.createElement(o.Redirect,{to:"/blog"})}}}]);
